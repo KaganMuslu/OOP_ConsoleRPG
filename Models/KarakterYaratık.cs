@@ -28,6 +28,8 @@ namespace ConsoleRPG.Models
 
         #endregion
 
+
+        // Bu class'ı miras alan her class random nesnesini buradan kullanabilir (Constructor Inheritance - Shared Resource Pattern)
         protected KarakterYaratık()
         {
             rnd = new Random();
@@ -44,7 +46,6 @@ namespace ConsoleRPG.Models
         }
 
         #endregion
-
 
 
     }

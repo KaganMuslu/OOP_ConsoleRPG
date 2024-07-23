@@ -12,8 +12,6 @@ namespace ConsoleRPG.Models
         public Sınıf Sınıf { get; set; }
         public Irk Irk { get; set; }
 
-        //Todo: Karakter ve yaratıklar çok kaçırıyor, ihtimal arttır
-        //Todo: Savaşlardan kaçışları ve dinlenmeyi düzelt
         public Karakter(Sınıf sinif, Irk irk)
         {
             // Genel Statlar
@@ -149,6 +147,15 @@ namespace ConsoleRPG.Models
                 default:
                     return 0;
             }
+        }
+
+        #endregion
+
+        #region Karakter Can Doldur
+
+        public int CanDoldur(Karakter karakter)
+        {
+            return rnd.Next(karakter.MaksimumCan / 4, karakter.MaksimumCan / 2);
         }
 
         #endregion
