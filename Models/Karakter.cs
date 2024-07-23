@@ -99,15 +99,15 @@ namespace ConsoleRPG.Models
             switch (karakter.Sınıf)
             {
                 case Sınıf.Barbar:
-                    return (int)(((Guc * 2) + (Dayanıklılık * 0.5)) * (base.Saldir() / 10));
+                    return (int)(((Guc * 2) + (Dayanıklılık * 0.5)) * (base.Saldir() / 5));
                 case Sınıf.Nişancı:
-                    return (int)((Guc + (Dayanıklılık * 0.5)) * (base.Saldir() / 10));
+                    return (int)((Guc + (Dayanıklılık * 0.5)) * (base.Saldir() / 5));
                 case Sınıf.Büyücü:
-                    return (int)(((Guc * 0.5) + (Zeka * 0.2)) * (base.Saldir() / 10));
+                    return (int)(((Guc * 0.5) + (Zeka * 0.2)) * (base.Saldir() / 5));
                 case Sınıf.Druid:
-                    return (int)(((Guc * 0.5) + (Zeka * 0.5)) * (base.Saldir() / 10));
+                    return (int)(((Guc * 0.5) + (Zeka * 0.5)) * (base.Saldir() / 5));
                 case Sınıf.Ninja:
-                    return (int)(((Guc * 1.5) + (Ceviklik * 1.5)) * (base.Saldir() / 10));
+                    return (int)(((Guc * 1.5) + (Ceviklik * 1.5)) * (base.Saldir() / 5));
                 default:
                     return 0;
             }
@@ -118,15 +118,15 @@ namespace ConsoleRPG.Models
             switch (karakter.Sınıf)
             {
                 case Sınıf.Barbar:
-                    return (int)(((Ceviklik * 0.5) + (Guc * 0.2)) * (base.Saldir() / 10));
+                    return (int)(((Ceviklik * 0.5) + (Guc * 0.2)) * (base.Saldir() / 5));
                 case Sınıf.Nişancı:
-                    return (int)(((Ceviklik * 2) + (Zeka * 0.5)) * (base.Saldir() / 10));
+                    return (int)(((Ceviklik * 2) + (Zeka * 0.5)) * (base.Saldir() / 5));
                 case Sınıf.Büyücü:
-                    return (int)((Ceviklik + (Zeka * 0.5)) * (base.Saldir() / 10));
+                    return (int)((Ceviklik + (Zeka * 0.5)) * (base.Saldir() / 5));
                 case Sınıf.Druid:
-                    return (int)((Ceviklik + (Zeka * 1.5)) * (base.Saldir() / 10));
+                    return (int)((Ceviklik + (Zeka * 1.5)) * (base.Saldir() / 5));
                 case Sınıf.Ninja:
-                    return (int)(((Ceviklik * 2) + (Guc * 0.5)) * (base.Saldir() / 10));
+                    return (int)(((Ceviklik * 2) + (Guc * 0.5)) * (base.Saldir() / 5));
                 default:
                     return 0;
             }
@@ -137,15 +137,15 @@ namespace ConsoleRPG.Models
             switch (karakter.Sınıf)
             {
                 case Sınıf.Barbar:
-                    return (int)(((Zeka * 0.5) + (Enerji * 0.5)) * (base.Saldir() / 10));
+                    return (int)(((Zeka * 0.5) + (Enerji * 0.5)) * (base.Saldir() / 5));
                 case Sınıf.Nişancı:
-                    return (int)(((Zeka * 1.5) + Enerji) * (base.Saldir() / 10));
+                    return (int)(((Zeka * 1.5) + Enerji) * (base.Saldir() / 5));
                 case Sınıf.Büyücü:
-                    return (int)(((Zeka * 2) + (Enerji * 1.5)) * (base.Saldir() / 10));
+                    return (int)(((Zeka * 2) + (Enerji * 1.5)) * (base.Saldir() / 5));
                 case Sınıf.Druid:
-                    return (int)(((Zeka * 2) + (Enerji * 1.5)) * (base.Saldir() / 10));
+                    return (int)(((Zeka * 2) + (Enerji * 1.5)) * (base.Saldir() / 5));
                 case Sınıf.Ninja:
-                    return (int)(((Zeka * 1.5) + Enerji) * (base.Saldir() / 10));
+                    return (int)(((Zeka * 1.5) + Enerji) * (base.Saldir() / 5));
                 default:
                     return 0;
             }

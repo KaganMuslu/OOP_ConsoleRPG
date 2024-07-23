@@ -73,15 +73,15 @@ namespace ConsoleRPG.Models
                     switch (yaratık.YaratıkSınıf)
                     {
                         case YaratıkSınıf.İskelet:
-                            return (int)(((Ceviklik * 0.5) + (Guc * 0.2)) * (base.Saldir() / 10));
+                            return (int)(((Ceviklik * 0.5) + (Guc * 0.2)) * (base.Saldir() / 5));
                         case YaratıkSınıf.Zombi:
-                            return (int)(((Ceviklik * 2) + (Zeka * 0.5)) * (base.Saldir() / 10));
+                            return (int)(((Ceviklik * 2) + (Zeka * 0.5)) * (base.Saldir() / 5));
                         case YaratıkSınıf.Goblin:
-                            return (int)((Ceviklik + (Zeka * 0.5)) * (base.Saldir() / 10));
+                            return (int)((Ceviklik + (Zeka * 0.5)) * (base.Saldir() / 5));
                         case YaratıkSınıf.Slime:
-                            return (int)((Ceviklik + (Zeka * 1.5)) * (base.Saldir() / 10));
+                            return (int)((Ceviklik + (Zeka * 1.5)) * (base.Saldir() / 5));
                         case YaratıkSınıf.Sıçan:
-                            return (int)(((Ceviklik * 2) + (Guc * 0.5)) * (base.Saldir() / 10));
+                            return (int)(((Ceviklik * 2) + (Guc * 0.5)) * (base.Saldir() / 5));
                         default:
                             return 0;
                     }
@@ -90,15 +90,15 @@ namespace ConsoleRPG.Models
                     switch (yaratık.YaratıkSınıf)
                     {
                         case YaratıkSınıf.İskelet:
-                            return (int)(((Zeka * 0.5) + (Enerji * 0.5)) * (base.Saldir() / 10));
+                            return (int)(((Zeka * 0.5) + (Enerji * 0.5)) * (base.Saldir() / 5));
                         case YaratıkSınıf.Zombi:
-                            return (int)(((Zeka * 1.5) + Enerji) * (base.Saldir() / 10));
+                            return (int)(((Zeka * 1.5) + Enerji) * (base.Saldir() / 5));
                         case YaratıkSınıf.Goblin:
-                            return (int)(((Zeka * 2) + (Enerji * 1.5)) * (base.Saldir() / 10));
+                            return (int)(((Zeka * 2) + (Enerji * 1.5)) * (base.Saldir() / 5));
                         case YaratıkSınıf.Slime:
-                            return (int)(((Zeka * 2) + (Enerji * 1.5)) * (base.Saldir() / 10));
+                            return (int)(((Zeka * 2) + (Enerji * 1.5)) * (base.Saldir() / 5));
                         case YaratıkSınıf.Sıçan:
-                            return (int)(((Zeka * 1.5) + Enerji) * (base.Saldir() / 10));
+                            return (int)(((Zeka * 1.5) + Enerji) * (base.Saldir() / 5));
                         default:
                             return 0;
                     }
@@ -107,15 +107,15 @@ namespace ConsoleRPG.Models
                     switch (yaratık.YaratıkSınıf)
                     {
                         case YaratıkSınıf.İskelet:
-                            return (int)(((Guc * 2) + (Dayanıklılık * 0.5)) * (base.Saldir() / 10));
+                            return (int)(((Guc * 2) + (Dayanıklılık * 0.5)) * (base.Saldir() / 5));
                         case YaratıkSınıf.Zombi:
-                            return (int)((Guc + (Dayanıklılık * 0.5)) * (base.Saldir() / 10));
+                            return (int)((Guc + (Dayanıklılık * 0.5)) * (base.Saldir() / 5));
                         case YaratıkSınıf.Goblin:
-                            return (int)(((Guc * 0.5) + (Zeka * 0.2)) * (base.Saldir() / 10));
+                            return (int)(((Guc * 0.5) + (Zeka * 0.2)) * (base.Saldir() / 5));
                         case YaratıkSınıf.Slime:
-                            return (int)(((Guc * 0.5) + (Zeka * 0.5)) * (base.Saldir() / 10));
+                            return (int)(((Guc * 0.5) + (Zeka * 0.5)) * (base.Saldir() / 5));
                         case YaratıkSınıf.Sıçan:
-                            return (int)(((Guc * 1.5) + (Ceviklik * 1.5)) * (base.Saldir() / 10));
+                            return (int)(((Guc * 1.5) + (Ceviklik * 1.5)) * (base.Saldir() / 5));
                         default:
                             return 0;
                     }

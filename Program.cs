@@ -24,6 +24,7 @@ namespace ConsoleRPG
             string secilen;
             string savasKac;
             string dovusTuru;
+            bool savasBitis;
             int hasar;
 
             string readSınıf;
@@ -126,7 +127,7 @@ namespace ConsoleRPG
                     switch (savasKac)
                     {
                         case "1":
-
+                            savasBitis = false;
                             do
                             {
                                 do
@@ -153,10 +154,17 @@ namespace ConsoleRPG
                                         break;
                                 }
 
+                                
                                 yaratık.MevcutCan -= hasar;
 
                                 Thread.Sleep(1000);
                                 Console.WriteLine($"\nYaratığa {hasar} hasar vuruldu!\n");
+
+                                if (yaratık.MevcutCan < 0)
+                                {
+                                    Console.WriteLine($"{yaratık.YaratıkSınıf} sizin tarafınızdan kesildi!");
+                                    savasBitis = true;
+                                }
 
                                 hasar = yaratık.Saldır(yaratık);
                                 karakter.MevcutCan -= hasar;
@@ -177,7 +185,7 @@ namespace ConsoleRPG
                                         return;
                                 }
 
-                            } while (true);
+                            } while (savasBitis != true);
 
                         case "2":
                             Console.WriteLine("Kaçılıyor...\n\n");
