@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConsoleRPG.Models
@@ -11,14 +12,17 @@ namespace ConsoleRPG.Models
     {
         public Sınıf Sınıf { get; set; }
         public Irk Irk { get; set; }
+        public int OldurulenYaratık { get; set; }
 
-        public Karakter(Sınıf sinif, Irk irk)
+        public Karakter(string kullanıcıAdı, Sınıf sinif, Irk irk)
         {
             // Genel Statlar
-            MaksimumCan = 40;
-            MevcutCan = 40;
+            MaksimumCan = 30;
+            MevcutCan = 30;
             Seviye = 1;
             MevcutTecrube = 0;
+            OldurulenYaratık = 0;
+            Isim = kullanıcıAdı;
 
             #region Karakter Statlar
 
@@ -160,5 +164,62 @@ namespace ConsoleRPG.Models
 
         #endregion
 
+        #region Karakter Seviye
+
+        // Karakter 20 tecrübeye gelince seviye atlat ve stat ver
+        public void KarakterSeviye(Karakter karakter)
+        {
+            if (karakter.MevcutTecrube > 20)
+            {
+                karakter.Seviye += 1;
+                Console.WriteLine($"\nKarakteriniz {karakter.Seviye}. seviyeye ulaştı! ");
+                karakter.MevcutTecrube -= 20;
+
+                Thread.Sleep(2000);
+                Console.WriteLine("Bir yeteneğinizi geliştirin:\n");
+                string read;
+
+                do
+                {
+                    Console.WriteLine($"1- Güç:{karakter.Guc} \n2- Çeviklik: {karakter.Ceviklik} \n3- Dayanıklılık: {karakter.Dayanıklılık} \n4- Zeka: {karakter.Zeka} \n5- Enerji: {karakter.Enerji}");
+                    read = Console.ReadLine();
+                } while (read != "1" && read != "2" && read != "3" && read != "4" && read != "5");
+
+                switch (read)
+                {
+                    case "1":
+                        karakter.Guc += 1;
+                        Console.WriteLine("Güç, bir seviye yükseltildi!");
+                        Thread.Sleep(1000);
+                        break;
+                    case "2":
+                        karakter.Ceviklik += 1;
+                        Console.WriteLine("Çeviklik, bir seviye yükseltildi!");
+                        Thread.Sleep(1000);
+                        break;
+                    case "3":
+                        karakter.Dayanıklılık += 1;
+                        Console.WriteLine("Dayanıklılık, bir seviye yükseltildi!");
+                        Thread.Sleep(1000);
+                        break;
+                    case "4":
+                        karakter.Zeka += 1;
+                        Console.WriteLine("Zeka, bir seviye yükseltildi!");
+                        Thread.Sleep(1000);
+                        break;
+                    case "5":
+                        karakter.Enerji += 1;
+                        Console.WriteLine("Enerji, bir seviye yükseltildi!");
+                        Thread.Sleep(1000);
+                        break;
+                }
+
+                // Karakterin maximum canını 10 arttır
+                karakter.MaksimumCan += 10;
+                karakter.MevcutCan += 10;
+            }
+        }
+
+        #endregion
     }
 }

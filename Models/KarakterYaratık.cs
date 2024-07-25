@@ -9,6 +9,9 @@ namespace ConsoleRPG.Models
 {
     internal abstract class KarakterYaratık : BaseEntity
     {
+        // SOLID | Liskov Substitution Principle (LSP) - Liskov Yerine Geçme Prensibine uygun alt ve base classlar
+        // Alt sınıflar, temel sınıfın sözleşmesini bozmadan temel sınıfın tüm işlevselliğini sunuyoor
+
         protected Random rnd;
 
         #region Karakter Özellikler

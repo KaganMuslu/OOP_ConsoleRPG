@@ -16,9 +16,9 @@ namespace ConsoleRPG
             Console.WriteLine("Merhabalar, ConsoleRPG'ye hoşgeldiniz!");
             Thread.Sleep(1000);
             Console.WriteLine("Bir kullanıcı adı belirleyin: ");
-            string username = Console.ReadLine();
+            string kullanıcıAdı = Console.ReadLine();
 
-            Console.WriteLine($"\nAnlaşıldı {username}. Şimdi de karakterinizin sınıfını seçin: ");
+            Console.WriteLine($"\nAnlaşıldı {kullanıcıAdı}. Şimdi de karakterinizin sınıfını seçin: ");
             Thread.Sleep(1000);
 
             bool savasBitis = false;
@@ -91,9 +91,9 @@ namespace ConsoleRPG
 
             } while (readSınıf != "1" && readSınıf != "2" && readSınıf != "3" && readSınıf != "4" && readSınıf != "5");
 
-            Console.WriteLine($"\nKarakterinizin adı {username}, sınıfı {secilenSınıf} ve ırkı {secilenIrk}\n");
+            Console.WriteLine($"\nKarakterinizin adı {kullanıcıAdı}, sınıfı {secilenSınıf} ve ırkı {secilenIrk}\n");
             Thread.Sleep(1000);
-            Karakter karakter = new Karakter(secilenSınıf, secilenIrk);
+            Karakter karakter = new Karakter(kullanıcıAdı, secilenSınıf, secilenIrk);
 
             #endregion
 
@@ -102,10 +102,10 @@ namespace ConsoleRPG
             Thread.Sleep(1000);
             do
             {
-                Console.WriteLine("1- Maceraya Çık\n2- Dinlen\n3- Çıkış Yap");
+                Console.WriteLine("1- Maceraya Çık\n2- Dinlen\n3- Statları Görüntüle \n4- Çıkış Yap");
                 secilen = Console.ReadLine();
 
-            } while (secilen != "1" && secilen != "2" && secilen != "3");
+            } while (secilen != "1" && secilen != "2" && secilen != "3" && secilen != "4");
 
 
             do
@@ -118,19 +118,19 @@ namespace ConsoleRPG
                     {
                         do
                         {
-                            Console.WriteLine("1- Maceraya Devam\n2- Dinlen\n3- Çıkış Yap");
+                            Console.WriteLine("\n1- Maceraya Devam\n2- Dinlen\n3- Statları Görüntüle \n4- Çıkış Yap");
                             secilen = Console.ReadLine();
 
-                        } while (secilen != "1" && secilen != "2" && secilen != "3");
+                        } while (secilen != "1" && secilen != "2" && secilen != "3" && secilen != "4");
                     }
                     else
                     {
                         do
                         {
-                            Console.WriteLine("1- Maceraya Devam\n2- Dinlen (Yakın zamanda dinlendiniz!)\n3- Çıkış Yap");
+                            Console.WriteLine("1- Maceraya Devam\n2- Dinlen (Yakın zamanda dinlendiniz!)\n3- Statları Görüntüle \n4- Çıkış Yap");
                             secilen = Console.ReadLine();
 
-                        } while (secilen != "1" && secilen != "3");
+                        } while (secilen != "1" && secilen != "3" && secilen != "4");
                     }
 
                 }
@@ -144,14 +144,12 @@ namespace ConsoleRPG
                         Thread.Sleep(1000);
                         Console.WriteLine("\nBir yaratıkla karşılaşıldı!");
                         Thread.Sleep(1000);
-                        Console.WriteLine($"Yaratığın türü: {yaratık.YaratıkSınıf}, canı: {yaratık.MevcutCan} ve seviyesi: {yaratık.Seviye}");
-                        Thread.Sleep(3000);
-                        Console.WriteLine($"\nSizin Statlarınız: \nSeviye: {karakter.Seviye} \nMevcut Can: {karakter.MevcutCan} \nGüç:{karakter.Guc} \nÇeviklik: {karakter.Ceviklik} \nDayanıklılık: {karakter.Dayanıklılık} \nZeka: {karakter.Zeka} \nEnerji: {karakter.Enerji} ");
+                        Console.WriteLine($"Yaratığın türü: {yaratık.YaratıkSınıf}, canı: {yaratık.MevcutCan} ve seviyesi: {yaratık.Seviye}\n");
                         Thread.Sleep(3000);
 
                         do
                         {
-                            Console.WriteLine("\nSavaşacak mısın kaçacak mısın? \n1- Savaş 2-Kaç\n");
+                            Console.WriteLine("Savaşacak mısın kaçacak mısın? \n1- Savaş 2-Kaç\n");
                             savasKac = Console.ReadLine();
 
                         } while (savasKac != "1" && savasKac != "2");
@@ -198,12 +196,14 @@ namespace ConsoleRPG
                                     {
                                         Console.WriteLine($"{yaratık.YaratıkSınıf} sizin tarafınızdan kesildi!");
                                         Thread.Sleep(2000);
+                                        karakter.OldurulenYaratık += 1;
                                         savasBitis = true;
                                         dinlen = false;
 
                                         // Karakter tecrübe kazanacak
                                         karakter.MevcutTecrube += yaratık.MevcutTecrube;
-                                        Console.WriteLine($"Karakteriniz {username}, {yaratık.MevcutTecrube} tecrübe puanı kazandı.");
+                                        Console.WriteLine($"Karakteriniz {karakter.Isim}, {yaratık.MevcutTecrube} tecrübe puanı kazandı.");
+                                        karakter.KarakterSeviye(karakter);
                                         Console.WriteLine($"Canınız: {karakter.MevcutCan}, Tecrübe puanınız: {karakter.MevcutTecrube}, Seviyeniz: {karakter.Seviye}");
                                         Thread.Sleep(2000);
                                     }
@@ -212,8 +212,19 @@ namespace ConsoleRPG
                                         hasar = yaratık.Saldır(yaratık);
                                         karakter.MevcutCan -= hasar;
                                         Console.WriteLine($"{yaratık.YaratıkSınıf} karakterinize {hasar} hasar verdi!\n\n");
-
                                         Thread.Sleep(3000);
+
+                                        if (karakter.MevcutCan <= 0)
+                                        {
+                                            Console.WriteLine($"{yaratık.Seviye}. seviye {yaratık.YaratıkSınıf}, karakterinizi öldürdü...");
+                                            Thread.Sleep(3000);
+                                            Console.WriteLine($"{karakter.Isim}, {karakter.Seviye}. seviyede öldü ve {karakter.OldurulenYaratık} yaratık kesti...");
+                                            Console.WriteLine("Sonraki oyunda bol şanslar!");
+                                            Console.Read();
+                                            savasBitis = true;
+                                            break;
+                                        }
+
                                         Console.WriteLine($"Mevcut Canınız: {karakter.MevcutCan} | {yaratık.YaratıkSınıf} Canı: {yaratık.MevcutCan}\n");
 
 
@@ -223,8 +234,10 @@ namespace ConsoleRPG
                                         switch (savasKac)
                                         {
                                             case "2":
-                                                Console.WriteLine("Kaçılıyor...");
-                                                return;
+                                                Console.WriteLine("Kaçılıyor...\n");
+                                                savasBitis = true;
+                                                Thread.Sleep(3000);
+                                                break;
                                         }
                                     }
 
@@ -237,7 +250,6 @@ namespace ConsoleRPG
                                 savasBitis = true;
                                 break;
                         }
-
                         break;
 
                     // Dinlenme ve can doldurma
@@ -260,7 +272,7 @@ namespace ConsoleRPG
                         {
                             karakter.MevcutCan += canDoldur;
                         }
-                        Console.WriteLine($"{username}, {canDoldur} can puanını tekrar doldurdu..");
+                        Console.WriteLine($"{karakter.Isim}, {canDoldur} can puanını tekrar doldurdu..");
                         Thread.Sleep(2000);
                         Console.WriteLine($"Yeni can miktarı: {karakter.MevcutCan} | Maksimum can miktarı: {karakter.MaksimumCan}\n");
                         Thread.Sleep(3000);
@@ -271,6 +283,13 @@ namespace ConsoleRPG
 
                     // Çıkış Yap
                     case "3":
+                        Console.WriteLine($"\nStatlarınız: \nSeviye: {karakter.Seviye} \nMevcut Can: {karakter.MevcutCan} \nGüç:{karakter.Guc} \nÇeviklik: {karakter.Ceviklik} \nDayanıklılık: {karakter.Dayanıklılık} \nZeka: {karakter.Zeka} \nEnerji: {karakter.Enerji}\n");
+                        Thread.Sleep(1000);
+                        savasBitis = true;
+                        break;
+
+                    // Çıkış Yap
+                    case "4":
                         Console.WriteLine("\nÇıkış  Yapılıyor...");
                         Thread.Sleep(1000);
                         Console.WriteLine("Görüşmek üzere");
@@ -278,11 +297,9 @@ namespace ConsoleRPG
                         break;
 
                 }
-            } while (savasBitis == true);
+            } while (savasBitis == true && karakter.MevcutCan > 0);
 
-            //Todo: 1- Savaş 2- Kaç seçeneğinde 3 seçilebiliyor
-            //Todo: Karakterin ölmesini ekle
-            //Todo: Tecrübe ile seviye atlama ve stat verme
+            //Todo: SOLID'e ait 5 prensibi kullanma (çoğunu yapıyorum). Yorum satırı halinde ilgili yerlere prensipleri yazma
 
         }
     }
