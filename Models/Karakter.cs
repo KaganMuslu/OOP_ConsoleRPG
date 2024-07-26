@@ -10,6 +10,8 @@ namespace ConsoleRPG.Models
 {
     internal class Karakter : KarakterYaratık
     {
+        // Single Responsibility Principle (SRP) - Tek Sorumluluk Prensibi
+        // Her bir özellik, bir amaca hizmet ediyor, farklı işler yapmıyor
         public Sınıf Sınıf { get; set; }
         public Irk Irk { get; set; }
         public int OldurulenYaratık { get; set; }
@@ -30,7 +32,7 @@ namespace ConsoleRPG.Models
             switch (sinif)
             {
                 case Sınıf.Barbar:
-                    Guc = 4;
+                    Guc = 3;
                     Ceviklik = 2;
                     Dayanıklılık = 2;
                     Zeka = 1;
@@ -44,10 +46,10 @@ namespace ConsoleRPG.Models
                     Enerji = 2;
                     break;
                 case Sınıf.Nişancı:
-                    Guc = 3;
+                    Guc = 2;
                     Ceviklik = 3;
                     Dayanıklılık = 1;
-                    Zeka = 2;
+                    Zeka = 3;
                     Enerji = 2;
                     break;
                 case Sınıf.Büyücü:

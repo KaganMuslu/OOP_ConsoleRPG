@@ -41,9 +41,10 @@ namespace ConsoleRPG.Models
 
         #region Temel Saldırı
 
-        public virtual int Saldir()
+        public int Saldir()
         {
             int BaseAtk = rnd.Next(1, 21);
+            Console.WriteLine("Zar Atılıyor (1-20), base saldırınız: " + BaseAtk);
 
             return BaseAtk;
         }
